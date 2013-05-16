@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amsgen,amstext,amsbsy,amsopn,amsfonts,hyperref, url,graphicx,tabularx,array,geometry,color}  
+\input{color}
+ 
+ \hypersetup{
+  colorlinks,
+  citecolor=DimGray,
+  filecolor=DimGray,
+  linkcolor=DimGray,
+  urlcolor=DimGray
+}
+
+\pagestyle{plain}
+
+
+\setlength{\parskip}{1ex}
+\setlength{\parindent}{0pt}
+
+\renewcommand{\title}[1]{\textbf{#1}\\}
+\renewcommand{\line}{\begin{tabularx}{\textwidth}{X>{\raggedleft}X}\hline\\\end{tabularx}\\[-0.5cm]}
+\newcommand{\leftright}[2]{\begin{tabularx}{\textwidth}{X>{\raggedleft}X}#1%
+& #2\\\end{tabularx}\\[-0.5cm]}
+
+
+\begin{document}
+
+\title{Oficina de Processing [at] Tarrafa Hackerspace}
+\line
+\leftright{\today}{Lucas Tonussi}
+
+\section{Processing, Puredata e Arduino}
+
+\qquad Nessa parte da oficina, última parte. Como extras da Oficina tentaremos conectar Processing com Puredata ou conectar Processing com Arduino. É muito interessante o que se pode fazer com Arduino controlando ele atravéz do Processing e não mais programando em c-like para Arduino. No final das contas os sinais são os mesmos, vindos dos pinos digitais (pwm~) ou analógicos, e ainda, Puredata é um poderoso manipulador de sinal. Com ele você pode criar som e imagem em tempo real.
+
+\subsection{Agarre seu Puredata!}
+
+\qquad Visite \href{http://puredata.info/downloads}{PUREDATA} e selecione a versão que é \begin{Large}\textbf{compatível}\end{Large} com seu sistema operacional.
+
+\qquad Veja:
+\begin{itemize}
+\item Qual arquitetura seu sistema operacional comporta: 32 bits ou 64 bits.
+\item Qual é seu sistema operacional: Mac, Windows, ou Linux.
+\item Faça o download da versão compatível.
+\end{itemize}
+
+\subsection{Agarre seu Arduino!}
+
+\qquad As últimas versões do Arduino IDE já vêm com o Firmata instalado basta você ir até Examples, Firmata, Standart\_Firmata. Abra suba ele para o Arduino. E preste atenção no que eu tenho para falar.
+
+\section{Abordando Processing}
+
+\qquad Programar em Processing é bastante fácil, basta começar. Vamos começar com prática. Vá ao \href{https://github.com/tonussi/oficinas/}{repo dessa oficina} e baixe o zip desse repositório, que contém todos os códigos que iremos trabalhar. E também todos os docs em \LaTeX. Essa oficina é tem base nesses docs, utilizem para se guiarem durante a oficina. Sigam os passos e façam os exercícios.
+
+\subsection{Exercício 1}
+
+\qquad Visitar \href{http://puredata.info/}{PUREDATA} e ficar sabendo do puredata, se você curte criar sua própria música, sintetizar seus próprios osciladores. Outro site que recomendo é \href{http://obiwannabe.co.uk/}{Obiwannabe} Contêm informação sobre produção sonora, sintetização de audio e criação musical. Tem também o livro do criador do Puredata, Johannes Kreidler, \href{http://www.pd-tutorial.com/}{Programming Electronic Music in Pd}. E os tutoriais, no youtube, por \href{http://www.youtube.com/playlist?list=PL12DC9A161D8DC5DC}{cheetomoskeeto}.
+
+\subsection{Exercício 2}
+
+\qquad Fazer blocos osciladores e como os seguintes e ligar eles ao processing. Criar som e imagem em tempo real. Alguns exemplos em frente:
+
+\begin{itemize}
+\item osc[1~5].pd
+\end{itemize}
+
+\subsection{Exercício 3}
+
+\qquad Instalar o \textsc{Standard\_Firmata.ino} no seu Arduino para que seja possível controlar ele via Processing, fazendo as duas vias.
+
+
+\section{Até a Próxima Oficina de Processing}
+
+\qquad Alguns livros que obviamente recomendo e que estão disponíveis para compra. Só lembrando, não tem necessidade de comprar esses livros se você consegue aprender olhando código dos outros na internet pois existem toneladas de código em processing pela internet basta saber procurar \href{http://www.processing.org/learning/books/}{Processing eBooks}. Meu email: \href{mailto:lptonussi@gmail.com}{lptonussi@gmail.com}.
+
+
+\end{document}
