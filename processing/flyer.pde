@@ -10,7 +10,7 @@ String a, b;
 void setup() {
   size(200, 200);
   colorMode(RGB, 100);
-  bg = loadImage("tarrafa.png");
+  bg = loadImage("tarrafa.jpg");
   background(color(118, 200, 216));
   t=25;
   cor=height;
