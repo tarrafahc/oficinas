@@ -1,0 +1,277 @@
+\documentclass[13pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\usepackage[centertags]{amsmath}
+\usepackage[svgnames]{xcolor}
+\usepackage[section]{placeins}
+
+\usepackage[lmargin=0.1cm, rmargin=0.1cm, tmargin=0.1cm, bmargin=0.1cm]{geometry}
+
+\usepackage{graphicx, amssymb, hyperref, color, ifxetex, ifluatex, libertine, listings, wrapfig, sectsty, pdfcomment, parskip}
+
+\newcommand{\HRule}{\rule{\linewidth}{1pt}}
+
+\sectionfont{\LARGE}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+% conditional for xetex or luatex
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+%
+\ifxetexorluatex%
+  \usepackage{fontspec}
+  \usepackage{libertine} % or use \setmainfont to choose any font on your system
+  \newfontfamily\quotefont[Ligatures=TeX]{Linux Libertine O} % selects Libertine as the quote font
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{libertine} % or any other font package
+  \newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}} % selects Libertine as the quote font
+\fi
+
+\newcommand*\quotesize{60} % if quote size changes, need a way to make shifts relative
+% Make commands for the quotes
+\newcommand*{\openquote}
+   {\tikz[remember picture,overlay,xshift=-4ex,yshift=-2.5ex]
+   \node (OQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont``};\kern0pt}
+
+\newcommand*{\closequote}[1]
+  {\tikz[remember picture,overlay,xshift=4ex,yshift={#1}]
+   \node (CQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont''};}
+
+% select a colour for the shading
+\colorlet{shadecolor}{Azure}
+
+\newcommand*\shadedauthorformat{\emph} % define format for the author argument
+
+% Now a command to allow left, right and centre alignment of the author
+\newcommand*\authoralign[1] {
+  \if#1l
+    \def\authorfill{}\def\quotefill{\hfill}
+  \else
+    \if#1r
+      \def\authorfill{\hfill}\def\quotefill{}
+    \else
+      \if#1c
+        \gdef\authorfill{\hfill}\def\quotefill{\hfill}
+      \else\typeout{Invalid option}
+      \fi
+    \fi
+  \fi
+}
+
+
+% wrap everything in its own environment which takes one argument (author) and one optional argument
+% specifying the alignment [l, r or c]
+\newenvironment{shadequote}[2][l]%
+{\authoralign{#1}
+\ifblank{#2}
+   {\def\shadequoteauthor{}\def\yshift{-2ex}\def\quotefill{\hfill}}
+   {\def\shadequoteauthor{\par\authorfill\shadedauthorformat{#2}}\def\yshift{2ex}}
+\begin{snugshade}\begin{quote}\openquote}
+{\shadequoteauthor\quotefill\closequote{\yshift}\end{quote}\end{snugshade}}
+
+\begin{document}
+
+\input{title}
+
+\tableofcontents
+\pagebreak
+
+\listoffigures
+\pagebreak
+
+\pagebreak
+
+% Neste trabalho prático os alunos deverão utilizar o "wireshark" para identificar a ocorrência de conexões e transferências de dados, envolvendo as camadas de aplicação, transporte e rede. Em telas capturas pelo "wireshark" os alunos deverão identificar os "pacotes" relacionados com criação da conexão, a transferência de dados e a liberação da conexão. Usar preferencialmente FTP e/ou HTTP. Fazer o relatório descrevendo as atividades.
+
+\section{Configuração}
+
+\begin{verbatim}
+> meu ip: 192.168.1.103
+> ip pronatec.mec.gov.br: 200.130.6.100
+\end{verbatim}
+
+\begin{verbatim}
+> firefox -safe-mode -g # depois, ctrl + shift + p == mode privado
+\end{verbatim}
+
+\begin{verbatim}
+> uname -a
+> Linux p5qpl-am 3.8.0-19-generic #30-Ubuntu SMP Wed May 1 16:35:23 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+\end{verbatim}
+
+\begin{verbatim}
+> ifconfig -a
+> wlan0 Link encap:Ethernet  HWaddr xx:xx:xx:xx:xx:xx
+      inet addr:192.168.1.103  Bcast:192.168.1.255  Mask:255.255.255.0
+      inet6 addr: fe80::a10:xxxx:fe5f:xxxx/64 Scope:Link
+      UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+      RX packets:612485 errors:0 dropped:0 overruns:0 frame:0
+      TX packets:412235 errors:0 dropped:0 overruns:0 carrier:0
+      collisions:0 txqueuelen:1000
+      RX bytes:870860278 (870.8 MB)  TX bytes:40905764 (40.9 MB)
+\end{verbatim}
+
+\pagebreak
+\subsection{Significado das Cores na Tela de Captura do Wireshark}
+
+\begin{figure}[ht]
+\centering
+% \includegraphics[width=\textwidth]{cores_ws}
+\caption{Coloração Padrão do Wireshark}
+\end{figure}
+
+\pagebreak
+\section{Liberação da conexão [FYN, ACK], [FYN]}
+\begin{center}
+\begin{figure}[ht]
+% \includegraphics[width=\textwidth]{fynack}
+\caption{Wireshark Filter: http.request}
+\end{figure}
+\end{center}
+
+\pagebreak
+\section{Criação da conexão [SYN], [SYN, ACK]}
+\begin{center}
+\begin{figure}[ht]
+% \includegraphics[width=\textwidth]{synack}
+\caption{Logo após acionar o site http://pronatec.mec.gov.br/}
+\end{figure}
+\end{center}
+
+\pagebreak
+\section{Transferência de dados pronatec.mec.gov.br}
+\begin{center}
+\begin{figure}[ht]
+% \includegraphics[width=\textwidth]{http}
+\caption{HTTP REQUEST http.request.method == GET}
+\end{figure}
+\end{center}
+
+\pagebreak
+\subsection{TCP STREAM [http.request.method == GET]}
+
+\begin{huge}
+   \href{Pronatec.mec.gov}{http://pronatec.mec.gov.br}
+\end{huge}
+
+\begin{verbatim}
+GET / HTTP/1.1
+Host: pronatec.mec.gov.br
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cookie:
+        PHPSESSID=4p433svpcr3c9d5jn31vou58e2;
+        __utma=166947327.526842696.1385833606.1385833606.1385833606.1;
+        __utmb=166947327.3.10.1385833606;
+        __utmc=166947327;
+        __utmz=166947327.1385833606.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+Connection: keep-alive
+If-Modified-Since: Sat, 30 Nov 2013 17:49:45 GMT
+Cache-Control: max-age=0
+
+HTTP/1.1 200 OK
+Date: Sat, 30 Nov 2013 17:51:20 GMT
+Server: Apache/2.2.14 (Ubuntu)
+X-Powered-By: PHP/5.3.2-1ubuntu4.7
+P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"
+Expires: Mon, 1 Jan 2001 00:00:00 GMT
+Last-Modified: Sat, 30 Nov 2013 17:51:20 GMT
+Cache-Control: post-check=0, pre-check=0
+Pragma: no-cache
+Vary: Accept-Encoding
+Keep-Alive: timeout=10
+Connection: Keep-Alive
+Content-Type: text/html; charset=utf-8
+Content-Encoding: gzip
+Transfer-Encoding: chunked
+\end{verbatim}
+
+\pagebreak
+\section{Conclusões tiradas sobre o HTTP tendo em vista o uso do wireshark e aprendizado teórico}
+
+\subsection{Camada OSI:  Aplicação}
+
+Quando eu escolho abrir uma página na web, atravéz no Firefox, um protocolo da camada de aplicação
+chamado HTTP (Hypertext Transfer Protocol) \textbf{formata} e envia a requisição  do meu browser (um software de aplicação)
+para o servidor. Assim como, também formata e envia a resposta devolta (response back) do servidor Web para o meu browser (client). \cite{rfc2916}
+
+Suponha que eu escolha enxergar a página do Programa Nacional de Acesso ao Ensino Técnico e Emprego (Pronatec).
+Eu digito http://pronatec.mec.gov.br no Firefox e clico Enter. Nesse instânte, a API do Firefox, transfere o meu requerimento
+para protocolo HTTP. HTTP então permite que eu alcance o servidor Web deles.
+
+Uma parte do método HTTP request (wireshark filter: http.request.method == GET) e diz para o servidor qual página eu quero acessar
+e retirar informação dela.
+
+Outra parte do HTTP request indica qual versão de HTTP que eu estou usando. Além de outras coisas.. Como se pode ver na imagem acima e na subseção Transferência de dados com a \href{http://pronatec.mec.gov.br/}{http://pronatec.mec.gov.br/}
+
+Depois do recebimento do meu HTTP request, o servidor web deles responde para também para o meu
+browser via HTTP. E a resposta deles inclui as informações que eu pedi anteriormente (informações = texto/imagens)
+e que vão ser montadas na forma de uma página web, para que eu possa interagir com ela.
+
+A versão HTTP usada, o tipo de resposta HTTP, e o comprimento da página. Todavia, se a página web é indisponível, inaucansável,
+o servidor, pronatec.mec.gov.br, irá me enviar um resposta HTTP contendo uma mensagem de erro, como HTTP 404.
+
+Perceba que a informação de um nó HTTP é desenhada para ser interpretada por outro nó HTTP. Via troca de protocólos. Todavia,
+HTTP requests não podem atravesar a rede de um nó para outro, sem a assistência de camadas de mais baixo nível. \cite{osi}
+
+\subsection{Camada OSI: Transporte}
+
+Protocólos na camada de transporte aceitam informação da camada de sessão e (re)manejam
+ela até o seu destino.
+
+Isso significa que ela assegura que a informação irá ser transferida do nó A ao nó B (reliability), na sequência correta, e sem erros. Sem a camada de transporte, o pacote que vem da camada de sessão não poderiria ser verificados ou interpretados.
+
+O protocolo da camada de transporte também assegura controle de fluxo, o qual é o processo de calibração apropriada da taxa de transmissão, baseada no quão rápido o remetente pode aceitar informação. Ou seja, existem muitos tipos de protocolos de transporte. Contudo redes modernas, como a Internet, abordam alguns tipos apenas.
+
+Por exemplo: Quando baixamos uma página web, o protocolo da camada de transporte chamado TCP (Transmission Control Protocol) assegura com segurança a transmissão do protocolo de requisição http do cliente para o servidor ou o contrário. \cite{osi}
+
+\subsection{Camada OSI: Rede}
+
+A função princípal dos protocolos na camada de Rede, é \textbf{traduzir} os endereços da rede e decidir como rotear informação do remetende para o destinatário.
+
+Essa camada implementa um sistema chamado endereçamento que identifica dispositivos na rede atravez de mapeamentos para valores numéricos.
+
+Cada nó tem dois tipos de endereço. Um tipo de endereço é chamado de endereço de rede. Endereços de rede pertencem a uma hierarquia e pode ser visualizada pelos sistemas operacionais.
+
+Os nós são hierarquicos pois eles contem sub-conjuntos de informações que determinam cota inferior e cota superior a esse nó.
+
+O endereço da camada de rede é formatado diferente, dependendo a qual protocolo da camada de rede a rede está usando. Endereços de rede são também chamados de endereços lógicos ou endereços virtuais.
+
+O segundo tipo de endereço dado a cada nó é chamado de endereço físico. \cite{osi}
+
+
+\pagebreak
+\begin{thebibliography}{unstr}
+
+\bibitem {wireshark01} Wireshark Org., "Como Configurar Privilégios no Wireshark", Sítio: \href{http://wiki.wireshark.org/CaptureSetup/CapturePrivileges}
+{http://wiki.wireshark.org/CaptureSetup/CapturePrivileges}; Acesso: \today
+
+\bibitem {howto} Null-byte Wonder Howto, "How to Spy on Your "Buddys" Network Traffic: An Intro to Wireshark and the OSI Model". Sítio:
+\href{http://null-byte.wonderhowto.com/how-to/spy-your-buddys-network-traffic-intro-wireshark-and-osi-model-0133807}
+{http://null-byte.wonderhowto.com/how-to/spy-your-buddys-network-traffic-intro-wireshark-and-osi-model-0133807}; Acesso: \today
+
+\bibitem {attack} Security.stackexchange.com, "HTTP 403 Response: Wireshark log analyzing". Sítio: \href{http://security.stackexchange.com/questions/12242/wireshark-log-analyzing}
+{http://security.stackexchange.com/questions/12242/wireshark-log-analyzing}; Acesso: \today
+
+\bibitem {rfc2916} Part of Hypertext Transfer Protocol -- HTTP/1.1 RFC 2616 Fielding, et al. Sítio: {http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html}; Acesso: \today
+
+\bibitem {osi} Networks Mania,  "OSI Model: 7 Layers". Sítio: \href{https://networksmania.wordpress.com/topics/osi-model/}{https://networksmania.wordpress.com/topics/osi-model/}; Acesso: \today
+
+\end{thebibliography}
+
+\end{document}
