@@ -1,7 +1,6 @@
 import oscP5.*;
 import netP5.*;
 
-
 /**
  * simple example of creating a new instance
  * of oscP5 to send and receive osc messages.
@@ -10,11 +9,11 @@ import netP5.*;
 OscP5 oscP5;
 
 // a NetAddress contains the ip address and port number of a remote location in the network.
-NetAddress myRemoteLocation; 
+NetAddress myRemoteLocation;
 
 void setup() {
   size(400, 400);
-  // create a new instance of oscP5. 
+  // create a new instance of oscP5.
   // 12000 is the port number you are listening for incoming osc messages.
   oscP5 = new OscP5(this, 12000);
 
@@ -58,4 +57,3 @@ void oscEvent(OscMessage theOscMessage) {
   println("### received an osc message with addrpattern " + " and typetag "+theOscMessage.typetag());
   theOscMessage.print();
 }
-
