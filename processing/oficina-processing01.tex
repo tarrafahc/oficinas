@@ -1,16 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
-\usepackage{amsmath,amsgen,amstext,amsbsy,amsopn,amsfonts,hyperref, url,graphicx,tabularx,array,geometry,color}  
-\input{color}
- 
- \hypersetup{
-  colorlinks,
-  citecolor=DimGray,
-  filecolor=DimGray,
-  linkcolor=DimGray,
-  urlcolor=DimGray
-}
+\usepackage{amsmath, amsgen, amstext, amsbsy, amsopn, amsfonts, hyperref,  url, graphicx, tabularx, array, geometry, color}
 
 \pagestyle{plain}
 
@@ -56,7 +47,7 @@ Cor:
 \item background()
 \begin{itemize}
 \item background(VALOR, VALOR, VALOR, ALPHA)
-\end{itemize}	
+\end{itemize}
 \item colorMode()
 \begin{itemize}
 \item colorMode(MODO, COMPRIMENTO, COMPRIMENTO, COMPRIMENTO);
@@ -64,11 +55,11 @@ Cor:
 \item stroke()
 \begin{itemize}
 \item stroke(VALOR, VALOR, VALOR, ALPHA)
-\end{itemize}	
+\end{itemize}
 \item fill()
 \begin{itemize}
 \item fill(VALOR, VALOR, VALOR, ALPHA)
-\end{itemize}	
+\end{itemize}
 \item tint()
 \begin{itemize}
 \item tint(VALOR, VALOR, VALOR, ALPHA)
@@ -115,7 +106,7 @@ int lastBar = -1;
 
 void setup() {
   size(200, 200);
-  colorMode(HSB, width, height, 100); 
+  colorMode(HSB, width, height, 100);
   noStroke();
 }
 
@@ -134,10 +125,10 @@ void draw() {
 \subsection{Exercício 4}
 
 \begin{verbatim}
-PImage b; 
-b = loadImage("tarrafa.png"); 
-image(b, 0, 0); 
-tint(0, 153, 204); 
+PImage b;
+b = loadImage("tarrafa.png");
+image(b, 0, 0);
+tint(0, 153, 204);
 image(b, 50, 0);
 \end{verbatim}
 
