@@ -1,0 +1,127 @@
+#N canvas 611 316 337 352 12;
+#N canvas 603 117 723 621 cron 0;
+#X obj 101 101 cnv 15 197 127 empty empty empty 20 12 0 14 -261234
+-66577 0;
+#X obj 103 161 nbx 2 65 0 60 0 1 empty empty empty 0 -16 0 38 -1 -4032
+-1 22 256;
+#X obj 103 -155 i;
+#X obj 137 -155 + 1;
+#X obj 103 140 tgl 15 0 startcm empty empty 17 7 0 10 -1 -4032 -1 1
+1;
+#X obj 103 -177 metro 60;
+#X obj 288 163 vsl 8 60 0 60 0 0 \$0-modcount empty empty 0 -9 0 10
+-1 -4032 -1 393 1;
+#X obj 278 163 vsl 8 60 0 60 0 0 \$1-modcount empty empty 0 -9 0 10
+-1 -4032 -1 393 1;
+#X obj 268 163 vsl 8 60 0 60 0 0 \$2-modcount empty empty 0 -9 0 10
+-1 -4032 -1 393 1;
+#X obj 258 163 vsl 8 60 0 60 0 0 \$3-modcount empty empty 0 -9 0 10
+-1 -4032 -1 5900 1;
+#X obj 248 163 vsl 8 60 0 60 0 0 \$4-modcount empty empty 0 -9 0 10
+-1 -4032 -1 2163 1;
+#X obj 238 163 vsl 8 60 0 60 0 0 \$5-modcount empty empty 0 -9 0 10
+-1 -4032 -1 5408 1;
+#X obj 228 163 vsl 8 60 0 60 0 0 \$6-modcount empty empty 0 -9 0 10
+-1 -4032 -1 1672 1;
+#X obj 218 163 vsl 8 60 0 60 0 0 \$7-modcount empty empty 0 -9 0 10
+-1 -4032 -1 4523 1;
+#X obj 103 -196 tgl 15 0 empty startcm empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 156 -201 r tempo-modcounter;
+#X obj 103 -41 mod 65;
+#X obj 103 -63 mod 87;
+#X obj 103 -19 mod 45;
+#X obj 103 3 mod 97;
+#X obj 264 131 hsl 30 8 0 127 0 0 \$1-modchange empty empty -2 -8 0
+10 -1 -4032 -1 2100 1;
+#X obj 221 141 hsl 30 8 0 127 0 0 \$6-modchange empty empty -2 -8 0
+10 -1 -4032 -1 2000 1;
+#X obj 264 141 hsl 30 8 0 127 0 0 \$2-modchange empty empty -2 -8 0
+10 -1 -4032 -1 600 1;
+#X obj 264 151 hsl 30 8 0 127 0 0 \$3-modchange empty empty -2 -8 0
+10 -1 -4032 -1 500 1;
+#X obj 221 151 hsl 30 8 0 127 0 0 \$7-modchange empty empty -2 -8 0
+10 -1 -4032 -1 1500 1;
+#X obj 262 49 r \$0-modchange;
+#X obj 264 121 hsl 30 8 0 127 0 0 \$0-modchange empty empty -2 -8 0
+10 -1 -4032 -1 1100 1;
+#X obj 221 131 hsl 30 8 0 127 0 0 \$5-modchange empty empty -2 -8 0
+10 -1 -4032 -1 700 1;
+#X obj 221 121 hsl 30 8 0 127 0 0 \$4-modchange empty empty -2 -8 0
+10 -1 -4032 -1 2200 1;
+#X obj 262 -105 r \$1-modchange;
+#X obj 262 -83 r \$2-modchange;
+#X obj 262 -61 r \$3-modchange;
+#X obj 262 -39 r \$4-modchange;
+#X obj 262 -17 r \$5-modchange;
+#X obj 262 5 r \$6-modchange;
+#X obj 262 27 r \$7-modchange;
+#X obj 103 -85 mod 112;
+#X obj 181 134 knob 20 20 0 1000 0 0 tempo-modcounter REMOVE_INPUT
+metro 0 -8 0 8 -262144 -4032 -1 400 1;
+#X obj 103 -107 mod 60;
+#X obj 103 47 mod 34;
+#X obj 103 25 mod 53;
+#X obj 103 69 mod 35;
+#X connect 2 0 3 0;
+#X connect 2 0 16 0;
+#X connect 2 0 17 0;
+#X connect 2 0 18 0;
+#X connect 2 0 19 0;
+#X connect 2 0 36 0;
+#X connect 2 0 38 0;
+#X connect 2 0 39 0;
+#X connect 2 0 40 0;
+#X connect 2 0 41 0;
+#X connect 3 0 2 1;
+#X connect 5 0 2 0;
+#X connect 14 0 5 0;
+#X connect 15 0 5 1;
+#X connect 16 0 8 0;
+#X connect 17 0 7 0;
+#X connect 18 0 9 0;
+#X connect 19 0 10 0;
+#X connect 25 0 41 1;
+#X connect 29 0 36 1;
+#X connect 30 0 17 1;
+#X connect 31 0 16 1;
+#X connect 32 0 18 1;
+#X connect 33 0 19 1;
+#X connect 34 0 40 1;
+#X connect 35 0 39 1;
+#X connect 36 0 6 0;
+#X connect 38 0 1 0;
+#X connect 39 0 12 0;
+#X connect 40 0 11 0;
+#X connect 41 0 13 0;
+#X coords 0 -1 1 1 199 130 1 100 100;
+#X restore 2 -146 pd cron;
+#X obj 237 -146 r \$8-modcount;
+#X obj 237 -124 r \$7-modcount;
+#X obj 237 -102 r \$6-modcount;
+#X obj 237 -80 r \$5-modcount;
+#X obj 237 -58 r \$4-modcount;
+#X obj 237 -36 r \$3-modcount;
+#X obj 237 -13 r \$2-modcount;
+#X obj 237 9 r \$1-modcount;
+#X obj 237 30 r \$0-modcount;
+#X obj 237 106 makenote;
+#X obj 293 81 hsl 25 15 0 500 0 0 empty empty empty -2 -8 0 10 -1 -4032
+-1 2100 1;
+#X obj 266 64 hsl 25 15 0 100 0 0 empty empty empty -2 -8 0 10 -1 -4032
+-1 1400 1;
+#X obj 252 160 noteout;
+#X connect 1 0 10 0;
+#X connect 2 0 10 0;
+#X connect 3 0 10 0;
+#X connect 4 0 10 0;
+#X connect 5 0 10 0;
+#X connect 6 0 10 0;
+#X connect 7 0 10 0;
+#X connect 8 0 10 0;
+#X connect 9 0 10 0;
+#X connect 10 0 13 0;
+#X connect 10 1 13 1;
+#X connect 11 0 10 2;
+#X connect 12 0 10 1;
+#X coords 0 352 1 351 385 260 0;

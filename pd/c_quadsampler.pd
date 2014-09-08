@@ -1,0 +1,358 @@
+#N canvas 442 267 377 330 10;
+#N canvas 80 108 1063 632 4waysampler 0;
+#X obj 101 101 cnv 15 183 158 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 276 8 adc~;
+#X obj 259 33 writesf~ 2;
+#X msg 108 -30 start;
+#X msg 259 -20 stop;
+#X obj 551 -24 readsf~ 2;
+#X obj 108 -74 bng 15 250 50 0 empty \$0-gravar empty 17 7 0 10 -262144
+-1 -1;
+#X obj 259 -38 bng 15 250 50 0 empty \$0-para-gravacao empty 17 7 0
+10 -262144 -1 -1;
+#X obj 394 -66 soundfiler;
+#X obj 551 -80 metro;
+#X obj 105 202 knob 32 32 100 5000 0 0 \$0-tempo-ciclo \$0-tempo-ciclo
+Metro 0 -8 0 8 -262144 -4032 -1 1800 1;
+#X obj 304 -81 r \$0-tempo;
+#X obj 394 -102 r \$0-toca;
+#X obj 551 -101 tgl 15 0 empty \$0-inicia-ciclo empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 106 150 bng 15 250 250 0 \$0-gravar empty Rec 17 7 0 10 -262144
+-1 -1;
+#X obj 259 -102 r \$0-shortrec;
+#X obj 105 242 nbx 10 14 -1e+37 1e+37 0 0 \$0-tempo-ciclo \$0-tempo-ciclo
+empty 0 -8 0 10 -262144 -1 -1 2945.16 256;
+#X obj 145 211 tgl 15 0 \$0-inicia-ciclo RETIRA_INPUT_ATIVA0 Ativa
+17 7 0 10 -262144 -1 -1 0 1;
+#X obj 578 -102 r \$0-tempo-ciclo;
+#X obj 106 169 bng 15 250 50 0 \$0-para-gravacao empty Termina 17 7
+0 10 -262144 -1 -1;
+#X msg 394 -84 read /tmp/s0.wav trecho;
+#X msg 603 -54 open /tmp/s0.wav;
+#X msg 146 -59 open /tmp/s0.wav;
+#X obj 259 -59 delay \$0;
+#X msg 551 -53 start;
+#X obj 206 146 output~;
+#X obj 207 217 output~;
+#X text 105 129 /tmp/s0.wav;
+#X obj 207 117 catch~ vmixl0;
+#X obj 206 188 catch~ vmixr0;
+#X obj 577 1 throw~ vmixr0;
+#X obj 552 22 throw~ vmixl0;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 31 0;
+#X connect 5 1 30 0;
+#X connect 6 0 22 0;
+#X connect 6 0 3 0;
+#X connect 7 0 4 0;
+#X connect 9 0 21 0;
+#X connect 9 0 24 0;
+#X connect 11 0 23 1;
+#X connect 12 0 20 0;
+#X connect 13 0 9 0;
+#X connect 15 0 23 0;
+#X connect 18 0 9 1;
+#X connect 20 0 8 0;
+#X connect 21 0 5 0;
+#X connect 22 0 2 0;
+#X connect 23 0 7 0;
+#X connect 24 0 5 0;
+#X connect 28 0 25 0;
+#X connect 28 0 25 1;
+#X connect 29 0 26 0;
+#X connect 29 0 26 1;
+#X coords 0 -1 1 1 185 160 1 100 100;
+#X restore -2888 -20 pd 4waysampler;
+#N canvas 55 89 1212 632 4waysampler 0;
+#X obj 101 101 cnv 15 183 158 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 220 43 adc~;
+#X obj 203 68 writesf~ 2;
+#X msg 52 5 start;
+#X msg 203 15 stop;
+#X obj 495 11 readsf~ 2;
+#X obj 52 -39 bng 15 250 50 0 empty \$2-gravar empty 17 7 0 10 -262144
+-1 -1;
+#X obj 203 -3 bng 15 250 50 0 empty \$2-para-gravacao empty 17 7 0
+10 -262144 -1 -1;
+#X obj 338 -31 soundfiler;
+#X obj 495 -45 metro;
+#X obj 495 -66 tgl 15 0 empty \$2-inicia-ciclo empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 203 -67 r \$0-shortrec;
+#X obj 522 -67 r \$2-tempo-ciclo;
+#X obj 338 -67 r \$2-toca;
+#X msg 338 -49 read /tmp/s2.wav trecho;
+#X msg 544 -19 open /tmp/s2.wav;
+#X obj 248 -46 r \$2-tempo;
+#X msg 90 -24 open /tmp/s2.wav;
+#X obj 203 -24 delay \$2;
+#X obj 104 202 knob 32 32 100 5000 0 0 \$2-tempo-ciclo \$2-tempo-ciclo
+Metro 0 -8 0 8 -262144 -4032 -1 2600 1;
+#X obj 105 150 bng 15 250 250 0 \$2-gravar empty Rec 17 7 0 10 -262144
+-1 -1;
+#X obj 104 242 nbx 10 14 -1e+37 1e+37 0 0 \$2-tempo-ciclo \$2-tempo-ciclo
+empty 0 -8 0 10 -262144 -1 -1 4209.68 256;
+#X obj 144 211 tgl 15 0 \$2-inicia-ciclo empty Ativa 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 105 169 bng 15 250 50 0 \$2-para-gravacao empty Termina 17 7
+0 10 -262144 -1 -1;
+#X obj 206 147 output~;
+#X obj 207 217 output~;
+#X msg 495 -18 start;
+#X obj 207 118 catch~ vmixl2;
+#X obj 206 188 catch~ vmixr2;
+#X obj 520 36 throw~ vmixr2;
+#X obj 496 56 throw~ vmixl2;
+#X text 104 129 /tmp/s2.wav;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 30 0;
+#X connect 5 1 29 0;
+#X connect 6 0 17 0;
+#X connect 6 0 3 0;
+#X connect 7 0 4 0;
+#X connect 9 0 15 0;
+#X connect 9 0 26 0;
+#X connect 10 0 9 0;
+#X connect 11 0 18 0;
+#X connect 12 0 9 1;
+#X connect 13 0 14 0;
+#X connect 14 0 8 0;
+#X connect 15 0 5 0;
+#X connect 16 0 18 1;
+#X connect 17 0 2 0;
+#X connect 18 0 7 0;
+#X connect 26 0 5 0;
+#X connect 27 0 24 0;
+#X connect 27 0 24 1;
+#X connect 28 0 25 0;
+#X connect 28 0 25 1;
+#X coords 0 -1 1 1 185 160 1 100 100;
+#X restore -2701 -20 pd 4waysampler;
+#N canvas 175 118 1063 632 4waysampler 0;
+#X obj 101 101 cnv 15 183 158 empty empty empty 20 12 0 14 -191407
+-66577 0;
+#X obj 269 3 adc~;
+#X obj 252 28 writesf~ 2;
+#X msg 94 -35 start;
+#X msg 252 -25 stop;
+#X obj 94 -79 bng 15 250 50 0 empty \$3-gravar empty 17 7 0 10 -262144
+-1 -1;
+#X obj 252 -43 bng 15 250 50 0 empty \$3-para-gravacao empty 17 7 0
+10 -262144 -1 -1;
+#X obj 380 -71 soundfiler;
+#X obj 252 -107 r \$0-shortrec;
+#X obj 380 -107 r \$3-toca;
+#X msg 380 -89 read /tmp/s3.wav trecho;
+#X obj 297 -86 r \$3-tempo;
+#X obj 252 -64 delay \$3;
+#X obj 105 202 knob 32 32 100 5000 0 0 \$3-tempo-ciclo \$3-tempo-ciclo
+Metro 0 -8 0 8 -262144 -4032 -1 1200 1;
+#X obj 106 150 bng 15 250 250 0 \$3-gravar empty Rec 17 7 0 10 -262144
+-1 -1;
+#X obj 105 242 nbx 10 14 -1e+37 1e+37 0 0 \$3-tempo-ciclo \$3-tempo-ciclo
+empty 0 -8 0 10 -262144 -1 -1 1996.77 256;
+#X obj 145 211 tgl 15 0 \$3-inicia-ciclo empty Ativa 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 106 170 bng 15 250 50 0 \$3-para-gravacao empty Termina 17 7
+0 10 -262144 -1 -1;
+#X obj 206 175 output~;
+#X obj 206 217 output~;
+#X obj 206 268 catch~ vmixr3;
+#X obj 206 288 catch~ vmixl3;
+#X obj 579 433 throw~ vmixr3;
+#X obj 506 453 throw~ vmixl3;
+#X obj 396 151 *~;
+#X obj 505 408 fdn~ 64 40000;
+#X obj 488 167 +~;
+#X obj 504 142 readsf~;
+#X msg 737 255 exponential 32 10 5000;
+#X msg 737 56 linear 8 75 100;
+#X msg 737 16 linear 32 50 2175;
+#X msg 737 338 exponential 8 50 175;
+#X msg 737 297 exponential 64 1000 10;
+#X msg 505 303 reset;
+#X msg 737 94 linear 32 100 105;
+#X msg 736 134 linear 64 10 15;
+#X msg 737 175 linear 8 1 5;
+#X msg 737 214 linear 64 4 5;
+#X obj 504 100 metro;
+#X obj 504 79 tgl 15 0 empty \$3-inicia-ciclo empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 396 89 pink~;
+#X obj 396 108 lop~ 100;
+#X obj 207 121 bng 8 250 50 0 efx0 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 217 121 bng 8 250 50 0 efx1 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 227 121 bng 8 250 50 0 efx2 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 207 131 bng 8 250 50 0 efx3 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 217 131 bng 8 250 50 0 efx4 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 227 131 bng 8 250 50 0 efx6 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 207 141 bng 8 250 50 0 efx7 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 217 141 bng 8 250 50 0 efx8 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 227 141 bng 8 250 50 0 efx9 empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 411 129 r acefx;
+#X obj 241 134 tgl 15 0 acefx empty Efeitos 0 -6 0 8 -24198 -1 -1 1
+1;
+#X obj 531 78 r \$3-tempo-ciclo;
+#X text 105 129 /tmp/s3fx.wav;
+#X msg 504 121 open /tmp/s3fx.wav \, 1;
+#X msg 132 -64 open /tmp/s3fx.wav;
+#X obj 737 -3 bng 15 250 50 0 empty efx0 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 37 bng 15 250 50 0 empty efx1 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 76 bng 15 250 50 0 empty efx2 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 116 bng 15 250 50 0 empty efx3 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 156 bng 15 250 50 0 empty efx4 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 196 bng 15 250 50 0 empty efx5 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 236 bng 15 250 50 0 empty efx6 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 277 bng 15 250 50 0 empty efx7 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 318 bng 15 250 50 0 empty efx8 empty 17 7 0 10 -262144 -1
+-1;
+#X obj 737 358 bng 15 250 50 0 empty efx9 empty 17 7 0 10 -262144 -1
+-1;
+#X msg 737 378 exponential 89 150 17 5;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 56 0;
+#X connect 5 0 3 0;
+#X connect 6 0 4 0;
+#X connect 8 0 12 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;
+#X connect 11 0 12 1;
+#X connect 12 0 6 0;
+#X connect 20 0 19 0;
+#X connect 20 0 19 1;
+#X connect 21 0 18 0;
+#X connect 21 0 18 1;
+#X connect 24 0 26 0;
+#X connect 25 0 23 0;
+#X connect 25 1 22 0;
+#X connect 26 0 25 0;
+#X connect 27 0 26 1;
+#X connect 28 0 25 0;
+#X connect 29 0 25 0;
+#X connect 30 0 25 0;
+#X connect 31 0 25 0;
+#X connect 32 0 25 0;
+#X connect 33 0 25 0;
+#X connect 34 0 25 0;
+#X connect 35 0 25 0;
+#X connect 36 0 25 0;
+#X connect 37 0 25 0;
+#X connect 38 0 55 0;
+#X connect 39 0 38 0;
+#X connect 40 0 41 0;
+#X connect 41 0 24 0;
+#X connect 51 0 24 1;
+#X connect 53 0 38 1;
+#X connect 55 0 27 0;
+#X connect 56 0 2 0;
+#X connect 57 0 30 0;
+#X connect 58 0 29 0;
+#X connect 59 0 34 0;
+#X connect 60 0 35 0;
+#X connect 61 0 36 0;
+#X connect 62 0 37 0;
+#X connect 63 0 28 0;
+#X connect 64 0 32 0;
+#X connect 65 0 31 0;
+#X connect 66 0 67 0;
+#X connect 67 0 25 0;
+#X coords 0 -1 1 1 185 160 1 100 100;
+#X restore -2701 142 pd 4waysampler;
+#N canvas 59 86 1063 632 4waysampler 0;
+#X obj 101 101 cnv 15 183 158 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 275 11 adc~;
+#X obj 258 36 writesf~ 2;
+#X msg 107 -27 start;
+#X msg 258 -17 stop;
+#X obj 550 -21 readsf~ 2;
+#X obj 107 -71 bng 15 250 50 0 empty \$1-gravar empty 17 7 0 10 -262144
+-1 -1;
+#X obj 258 -35 bng 15 250 50 0 empty \$1-para-gravacao empty 17 7 0
+10 -262144 -1 -1;
+#X msg 145 -56 open /tmp/s1.wav;
+#X msg 604 -51 open /tmp/s1.wav;
+#X obj 393 -63 soundfiler;
+#X obj 550 -77 metro;
+#X obj 550 -98 tgl 15 0 empty \$1-inicia-ciclo empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 258 -99 r \$0-shortrec;
+#X msg 393 -81 read /tmp/s1.wav trecho;
+#X obj 577 -99 r \$1-tempo-ciclo;
+#X obj 393 -99 r \$1-toca;
+#X obj 303 -78 r \$1-tempo;
+#X obj 258 -56 delay \$1;
+#X obj 105 202 knob 32 32 100 5000 0 0 \$1-tempo-ciclo \$1-tempo-ciclo
+Metro 0 -8 0 8 -262144 -4032 -1 1700 1;
+#X obj 106 150 bng 15 250 250 0 \$1-gravar empty Rec 17 7 0 10 -262144
+-1 -1;
+#X obj 105 242 nbx 10 14 -1e+37 1e+37 0 0 \$1-tempo-ciclo \$1-tempo-ciclo
+empty 0 -8 0 10 -262144 -1 -1 2787.1 256;
+#X obj 145 211 tgl 15 0 \$1-inicia-ciclo empty Ativa 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 106 169 bng 15 250 50 0 \$1-para-gravacao empty Termina 17 7
+0 10 -262144 -1 -1;
+#X obj 206 147 output~;
+#X obj 207 217 output~;
+#X msg 550 -50 start;
+#X obj 576 6 throw~ vmixl1;
+#X obj 551 27 throw~ vmixl1;
+#X obj 207 118 catch~ vmixl1;
+#X obj 206 188 catch~ vmixr1;
+#X text 104 130 /tmp/s1.wav;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 28 0;
+#X connect 5 1 27 0;
+#X connect 6 0 8 0;
+#X connect 6 0 3 0;
+#X connect 7 0 4 0;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 11 0 9 0;
+#X connect 11 0 26 0;
+#X connect 12 0 11 0;
+#X connect 13 0 18 0;
+#X connect 14 0 10 0;
+#X connect 15 0 11 1;
+#X connect 16 0 14 0;
+#X connect 17 0 18 1;
+#X connect 18 0 7 0;
+#X connect 26 0 5 0;
+#X connect 29 0 24 0;
+#X connect 29 0 24 1;
+#X connect 30 0 25 0;
+#X connect 30 0 25 1;
+#X coords 0 -1 1 1 185 160 1 100 100;
+#X restore -2888 142 pd 4waysampler;

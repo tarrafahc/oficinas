@@ -1,0 +1,15 @@
+#N canvas 371 197 625 471 10;
+#X obj 26 335 noteout;
+#X obj 342 224 + 1;
+#X obj 26 215 makenote;
+#X obj 126 78 inlet velocidade;
+#X obj 248 137 inlet atraso;
+#X obj 342 200 inlet instrument;
+#X obj 26 50 inlet pitch;
+#X connect 1 0 0 2;
+#X connect 2 0 0 0;
+#X connect 2 1 0 1;
+#X connect 3 0 2 1;
+#X connect 4 0 2 2;
+#X connect 5 0 1 0;
+#X connect 6 0 2 0;
