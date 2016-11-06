@@ -1,4 +1,4 @@
-# Minhas criações na linguagem Puredata
+# Minhas (Lucas Tonussi) criações na linguagem Puredata
 
 Puredata é uma linguagem de programaçao baseada em fluxo
 onde você cria elementos e da nome a eles. Assim você
